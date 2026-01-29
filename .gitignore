@@ -32,3 +32,7 @@ yarn-error.log*
 # Misc
 .cache/
 .temp/
+
+.claude
+.cursor
+CLAUDE.md

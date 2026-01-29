@@ -1,7 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Instagram, Facebook, Send } from "lucide-react"; // Send as Telegram alternative
 import { cn } from "@/lib/utils";
-import logoImg from "/assets/logo.svg";
 
 export function Header() {
   const [location] = useLocation();
@@ -17,14 +16,12 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-[#FDFBF7]/90 backdrop-blur-md border-b border-stone-200/50">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-           {/* Fallback if SVG missing, but intended for /assets/logo.svg */}
-           <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform">
-             P
-           </div>
-           <span className="font-display font-bold text-xl text-secondary tracking-tight">
-             PawGuard
-           </span>
+        <Link href="/" className="flex items-center group">
+           <img
+             src="/assets/logo.png"
+             alt="Рудий Пес"
+             className="h-16 w-auto group-hover:scale-105 transition-transform"
+           />
         </Link>
 
         {/* Desktop Nav */}
@@ -47,13 +44,13 @@ export function Header() {
 
         {/* Social Icons */}
         <div className="flex items-center gap-3">
-          <a href="#" className="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:-translate-y-1 shadow-sm">
+          <a href="https://www.instagram.com/rudyi_pes_shelter/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:-translate-y-1 shadow-sm">
             <Instagram size={18} />
           </a>
-          <a href="#" className="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:-translate-y-1 shadow-sm">
+          <a href="https://www.facebook.com/groups/697113697558151/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:-translate-y-1 shadow-sm">
             <Facebook size={18} />
           </a>
-          <a href="#" className="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:-translate-y-1 shadow-sm">
+          <a href="https://t.me/RedDogShelterbot" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-secondary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:-translate-y-1 shadow-sm">
             <Send size={18} />
           </a>
         </div>

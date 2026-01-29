@@ -9,19 +9,22 @@ export default function Help() {
       title: "Корм та смаколики",
       icon: Bone,
       description: "Ми завжди потребуємо сухого корму для собак, консервів та жувальних смаколиків для тренувань.",
-      action: "Дізнатися деталі"
+      action: "Задонатити",
+      link: "https://send.monobank.ua/jar/7761jKuD44"
     },
     {
       title: "Лікування",
       icon: Stethoscope,
       description: "Медикаменти, обробка від паразитів та вакцинація - це постійні витрати, які рятують життя.",
-      action: "Допомогти фінансово"
+      action: "Задонатити",
+      link: "https://send.monobank.ua/jar/9WN9LchTho"
     },
     {
-      title: "Побутові потреби",
+      title: "Потреби притулку",
       icon: Home,
       description: "Миючі засоби, підстилки, будівельні матеріали для вольєрів та інвентар для прибирання.",
-      action: "Переглянути список"
+      action: "Задонатити",
+      link: "https://send.monobank.ua/jar/5b3DtLXZvK"
     }
   ];
 
@@ -52,9 +55,11 @@ export default function Help() {
               <p className="text-stone-500 mb-8 leading-relaxed flex-grow">
                 {card.description}
               </p>
-              <Button variant="secondary" className="w-full rounded-full">
-                {card.action}
-              </Button>
+              <a href={card.link} target="_blank" rel="noopener noreferrer">
+                <Button variant="secondary" className="w-full rounded-full">
+                  {card.action}
+                </Button>
+              </a>
             </div>
           ))}
         </div>
