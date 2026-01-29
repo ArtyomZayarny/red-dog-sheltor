@@ -49,7 +49,7 @@ export function DogCard({ dog }: DogCardProps) {
     <div className="group relative flex flex-col bg-white rounded-[40px] p-4 shadow-sm hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 hover:-translate-y-2 border border-stone-100">
       <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[32px] bg-stone-100 mb-4">
         <img
-          src={dog.image}
+          src={dog.image || "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=800&fit=crop"}
           alt={dog.name}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -65,7 +65,7 @@ export function DogCard({ dog }: DogCardProps) {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-6">
-          {dog.tags.slice(0, 2).map((tag) => (
+          {(dog.tags || []).slice(0, 2).map((tag) => (
             <span key={tag} className="text-xs font-semibold text-stone-500 bg-stone-100 px-3 py-1 rounded-full">
               {tag}
             </span>

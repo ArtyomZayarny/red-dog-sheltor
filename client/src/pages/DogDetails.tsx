@@ -52,7 +52,7 @@ export default function DogDetails() {
           <div className="lg:w-1/2">
             <div className="aspect-[4/5] w-full rounded-[40px] overflow-hidden bg-stone-100 relative group">
               <img
-                src={dog.image}
+                src={dog.image || "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=800&fit=crop"}
                 alt={dog.name}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -70,7 +70,7 @@ export default function DogDetails() {
                 <span className="bg-primary/10 text-primary font-bold px-4 py-2 rounded-full">
                   {dog.gender}
                 </span>
-                {dog.tags.map(tag => (
+                {(dog.tags || []).map(tag => (
                   <span key={tag} className="bg-stone-100 text-stone-600 px-4 py-2 rounded-full font-medium">
                     {tag}
                   </span>

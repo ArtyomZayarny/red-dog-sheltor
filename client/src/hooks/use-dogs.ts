@@ -1,31 +1,59 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { api, type Inquiry } from "@shared/routes";
-import { MOCK_DOGS } from "@/data/dogs";
+import { type Inquiry } from "@shared/routes";
+import { type Dog } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 
-// Since requirements asked to NOT fetch dogs from backend for the list, 
-// we will simulate the data structure here but strictly return local data.
-// The contract exists in shared/routes, but we are using MOCK_DOGS as per instructions.
+const STRAPI_URL = "http://localhost:1337";
+
+// Transform Strapi response to match frontend Dog type
+function transformDog(strapiDog: Record<string, unknown>): Dog {
+  const genderMap: Record<string, string> = {
+    male: "Хлопчик",
+    female: "Дівчинка",
+  };
+
+  return {
+    id: strapiDog.id as number,
+    documentId: strapiDog.documentId as string,
+    slug: strapiDog.slug as string,
+    name: strapiDog.name as string,
+    age: strapiDog.age as string,
+    gender: genderMap[strapiDog.gender as string] || (strapiDog.gender as string),
+    status: strapiDog.status as Dog["status"],
+    priceMonthly: strapiDog.priceMonthly as number,
+    tags: (strapiDog.tags as string[]) || [],
+    description: strapiDog.description as string,
+    curatorPhone: strapiDog.curatorPhone as string,
+    image: strapiDog.image
+      ? `${STRAPI_URL}${(strapiDog.image as { url: string }).url}`
+      : null,
+  };
+}
 
 export function useDogs() {
   return useQuery({
-    queryKey: [api.dogs.list.path],
+    queryKey: ["dogs"],
     queryFn: async () => {
-      // Simulating network delay for realism
-      await new Promise(resolve => setTimeout(resolve, 500));
-      return MOCK_DOGS;
+      const res = await fetch(`${STRAPI_URL}/api/dogs?populate=image`);
+      if (!res.ok) throw new Error("Failed to fetch dogs");
+      const json = await res.json();
+      return (json.data as Record<string, unknown>[]).map(transformDog);
     },
   });
 }
 
 export function useDog(slug: string) {
   return useQuery({
-    queryKey: [api.dogs.list.path, slug],
+    queryKey: ["dogs", slug],
     queryFn: async () => {
-      await new Promise(resolve => setTimeout(resolve, 300));
-      const dog = MOCK_DOGS.find(d => d.slug === slug);
-      if (!dog) throw new Error("Dog not found");
-      return dog;
+      const res = await fetch(
+        `${STRAPI_URL}/api/dogs?filters[slug][$eq]=${slug}&populate=image`
+      );
+      if (!res.ok) throw new Error("Failed to fetch dog");
+      const json = await res.json();
+      const dogs = json.data as Record<string, unknown>[];
+      if (!dogs.length) throw new Error("Dog not found");
+      return transformDog(dogs[0]);
     },
   });
 }
