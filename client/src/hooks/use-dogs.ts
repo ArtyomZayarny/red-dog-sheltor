@@ -3,7 +3,10 @@ import { type Dog } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 import { MOCK_DOGS } from "@/data/dogs";
 
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
+const STRAPI_URL = import.meta.env.VITE_STRAPI_URL ||
+  (import.meta.env.PROD
+    ? "https://red-dog-sheltor-production.up.railway.app"
+    : "http://localhost:1337");
 
 // Formsubmit.co - email for receiving inquiries
 const INQUIRY_EMAIL = "timaz.dev@gmail.com";
