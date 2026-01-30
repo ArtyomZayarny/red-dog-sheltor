@@ -9,7 +9,7 @@ export const dogSchema = z.object({
   name: z.string(),
   age: z.string(),
   gender: z.string(),
-  status: z.enum(["available", "under_guardianship", "in_family"]),
+  adoptionStatus: z.enum(["available", "under_guardianship", "in_family"]),
   priceMonthly: z.number(),
   tags: z.array(z.string()).nullable(),
   description: z.string(),

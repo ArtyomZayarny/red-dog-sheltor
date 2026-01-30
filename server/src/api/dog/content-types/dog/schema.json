@@ -30,7 +30,7 @@
       "enum": ["male", "female"],
       "required": true
     },
-    "status": {
+    "adoptionStatus": {
       "type": "enumeration",
       "enum": ["available", "under_guardianship", "in_family"],
       "default": "available",

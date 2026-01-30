@@ -22,7 +22,7 @@ function transformDog(strapiDog: Record<string, unknown>): Dog {
     name: strapiDog.name as string,
     age: strapiDog.age as string,
     gender: genderMap[strapiDog.gender as string] || (strapiDog.gender as string),
-    status: strapiDog.status as Dog["status"],
+    adoptionStatus: strapiDog.adoptionStatus as Dog["adoptionStatus"],
     priceMonthly: strapiDog.priceMonthly as number,
     tags: (strapiDog.tags as string[]) || [],
     description: strapiDog.description as string,

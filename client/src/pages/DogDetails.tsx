@@ -92,11 +92,11 @@ export default function DogDetails() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="flex-1 h-14 text-lg rounded-full" disabled={dog.status !== 'available'}>
-                  {dog.status === 'available' ? 'Забрати додому' : 'Недоступний'}
+                <Button className="flex-1 h-14 text-lg rounded-full" disabled={dog.adoptionStatus !== 'available'}>
+                  {dog.adoptionStatus === 'available' ? 'Забрати додому' : 'Недоступний'}
                 </Button>
-                
-                {dog.status === 'available' && (
+
+                {dog.adoptionStatus === 'available' && (
                   <InquiryModal 
                     dogName={dog.name}
                     trigger={

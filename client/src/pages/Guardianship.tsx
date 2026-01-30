@@ -16,7 +16,7 @@ export default function Guardianship() {
 
   const filteredDogs = dogs?.filter(dog => {
     if (filter === 'all') return true;
-    return dog.status === filter;
+    return dog.adoptionStatus === filter;
   });
 
   const filters: { id: FilterStatus; label: string }[] = [

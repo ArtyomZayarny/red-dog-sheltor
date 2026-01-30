@@ -42,7 +42,7 @@ export function DogCard({ dog }: DogCardProps) {
     }
   };
 
-  const statusConfig = getStatusConfig(dog.status);
+  const statusConfig = getStatusConfig(dog.adoptionStatus);
   const StatusIcon = statusConfig.icon;
 
   return (

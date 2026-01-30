@@ -12,7 +12,7 @@ export default function Home() {
 
   // Preview only 3 available dogs
   const previewDogs = dogs 
-    ? dogs.filter(d => d.status === 'available').slice(0, 3) 
+    ? dogs.filter(d => d.adoptionStatus === 'available').slice(0, 3) 
     : [];
 
   return (

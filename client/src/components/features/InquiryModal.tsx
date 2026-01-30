@@ -49,7 +49,7 @@ export function InquiryModal({ dogName, trigger }: InquiryModalProps) {
     
     setErrors({});
     
-    mutation.mutate(formData, {
+    mutation.mutate({ ...formData, dogName }, {
       onSuccess: () => {
         setOpen(false);
         setFormData({ name: "", phone: "", contactTime: "morning" });
