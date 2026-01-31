@@ -9,7 +9,7 @@ const STRAPI_URL = import.meta.env.VITE_STRAPI_URL ||
     : "http://localhost:1337");
 
 // Formsubmit.co - email for receiving inquiries
-const INQUIRY_EMAIL = "timaz.dev@gmail.com";
+const INQUIRY_EMAIL = import.meta.env.INQUIRY_EMAIL
 
 // Transform Strapi response to match frontend Dog type
 function transformDog(strapiDog: Record<string, unknown>): Dog {

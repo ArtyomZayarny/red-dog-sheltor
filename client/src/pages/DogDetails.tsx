@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/custom-button";
 import { useDog } from "@/hooks/use-dogs";
-import { ArrowLeft, Phone, Heart } from "lucide-react";
+import { ArrowLeft, Phone } from "lucide-react";
 import { InquiryModal } from "@/components/features/InquiryModal";
 
 export default function DogDetails() {
@@ -92,19 +92,19 @@ export default function DogDetails() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="flex-1 h-14 text-lg rounded-full" disabled={dog.adoptionStatus !== 'available'}>
-                  {dog.adoptionStatus === 'available' ? 'Забрати додому' : 'Недоступний'}
-                </Button>
-
-                {dog.adoptionStatus === 'available' && (
-                  <InquiryModal 
+                {dog.adoptionStatus === 'available' ? (
+                  <InquiryModal
                     dogName={dog.name}
                     trigger={
-                      <Button variant="secondary" className="flex-1 h-14 text-lg rounded-full">
-                        <Heart className="mr-2 h-5 w-5" /> Взяти під опіку
+                      <Button className="flex-1 h-14 text-lg rounded-full">
+                        Забрати додому
                       </Button>
                     }
                   />
+                ) : (
+                  <Button className="flex-1 h-14 text-lg rounded-full" disabled>
+                    Недоступний
+                  </Button>
                 )}
               </div>
 
