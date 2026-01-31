@@ -35,7 +35,7 @@ export default function Help() {
       <main className="flex-grow container mx-auto px-4 py-16">
         <div className="bg-secondary rounded-[48px] p-12 md:p-20 text-center mb-16 text-white overflow-hidden relative">
           <div className="relative z-10">
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8">Допомога притулку</h1>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8 text-white">Допомога притулку</h1>
             <p className="text-stone-300 text-xl max-w-2xl mx-auto leading-relaxed">
               Притулок існує завдяки небайдужим людям. Кожна гривня, кожна банка корму і кожна година вашого часу важливі для наших підопічних.
             </p>
